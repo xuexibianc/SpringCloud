@@ -1,6 +1,7 @@
 package com.example.mapper;
 
 
+import com.example.dto.ProductRequest;
 import com.example.entity.Product;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -9,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ProductMapper {
     int deleteByPrimaryKey(Integer productId);
 
-    int insert(Product row);
+    int insert(ProductRequest row);
 
     int insertSelective(Product row);
 
@@ -21,4 +22,6 @@ public interface ProductMapper {
 
 
     Product getProductById(Integer productId);
+
+    int createProduct(ProductRequest productRequest);
 }

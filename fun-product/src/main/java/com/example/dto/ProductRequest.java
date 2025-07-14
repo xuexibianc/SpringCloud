@@ -1,20 +1,28 @@
-package com.example.entity;
+package com.example.dto;
 
 import com.example.constant.ProductCategory;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 
-public class Product {
+/**
+ * @author wangxinliang@civil.com.cn
+ * @date 2025/07/12
+ * @功能介绍 新增商品
+ */
+public class ProductRequest {
+
+    @NotNull
     private Integer productId;
-
+    @NotNull
     private String productName;
-
+    @NotNull
     private ProductCategory category;
-
+    @NotNull
     private String imageUrl;
-
+    @NotNull
     private Integer price;
-
+    @NotNull
     private Integer stock;
 
     private String description;
@@ -23,12 +31,20 @@ public class Product {
 
     private Date lastModifiedDate;
 
-    public ProductCategory getCategory() {
-        return category;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCategory(ProductCategory category) {
-        this.category = category;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public Integer getProductId() {
@@ -44,7 +60,15 @@ public class Product {
     }
 
     public void setProductName(String productName) {
-        this.productName = productName == null ? null : productName.trim();
+        this.productName = productName;
+    }
+
+    public ProductCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(ProductCategory category) {
+        this.category = category;
     }
 
     public String getImageUrl() {
@@ -52,7 +76,7 @@ public class Product {
     }
 
     public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl == null ? null : imageUrl.trim();
+        this.imageUrl = imageUrl;
     }
 
     public Integer getPrice() {
@@ -76,22 +100,6 @@ public class Product {
     }
 
     public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
+        this.description = description;
     }
 }

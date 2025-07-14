@@ -46,6 +46,19 @@
   </select>
   <!--根据id获取产品 by wxl 2025711-->
 
+  <!--新增商品 by wxl 2025712-->
+  <insert id="createProduct" parameterType="com.example.dto.ProductRequest" useGeneratedKeys="true" keyProperty="productId" keyColumn="product_id">
+    insert into product (product_id, product_name, category,
+                         image_url, price, stock,
+                         description, created_date, last_modified_date
+    )
+    values (#{productId,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR},
+            #{imageUrl,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, #{stock,jdbcType=INTEGER},
+            #{description,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{lastModifiedDate,jdbcType=TIMESTAMP}
+           )
+  </insert>
+  <!--新增商品 by wxl 2025712-->
+
   <insert id="insertSelective" parameterType="com.example.entity.Product">
     insert into product
     <trim prefix="(" suffix=")" suffixOverrides=",">
