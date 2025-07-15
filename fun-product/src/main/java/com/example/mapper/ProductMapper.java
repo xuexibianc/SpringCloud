@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface ProductMapper {
-    int deleteByPrimaryKey(Integer productId);
+
 
     int insert(ProductRequest row);
 
@@ -24,4 +24,8 @@ public interface ProductMapper {
     Product getProductById(Integer productId);
 
     int createProduct(ProductRequest productRequest);
+
+    void updateProduct(ProductRequest productRequest);
+
+    int deleteByPrimaryKey(Integer productId);
 }

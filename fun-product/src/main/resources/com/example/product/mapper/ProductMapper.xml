@@ -22,10 +22,7 @@
     from product
     where product_id = #{productId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from product
-    where product_id = #{productId,jdbcType=INTEGER}
-  </delete>
+
   <insert id="insert" parameterType="com.example.entity.Product">
     insert into product (product_id, product_name, category, 
       image_url, price, stock, 
@@ -58,6 +55,27 @@
            )
   </insert>
   <!--新增商品 by wxl 2025712-->
+
+  <!--修改商品 by wxl 2025714-->
+  <update id="updateProduct" parameterType="com.example.dto.ProductRequest">
+    update product
+    set product_name = #{productName,jdbcType=VARCHAR},
+        category = #{category,jdbcType=VARCHAR},
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+        price = #{price,jdbcType=INTEGER},
+        stock = #{stock,jdbcType=INTEGER},
+        description = #{description,jdbcType=VARCHAR},
+        last_modified_date = #{lastModifiedDate,jdbcType=TIMESTAMP}
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+  <!--修改商品 by wxl 2025714-->
+
+  <!--删除商品 by wxl 2025714-->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product
+    where product_id = #{productId,jdbcType=INTEGER}
+  </delete>
+  <!--删除商品 by wxl 2025714-->
 
   <insert id="insertSelective" parameterType="com.example.entity.Product">
     insert into product

@@ -31,4 +31,19 @@ public class ProductServiceImpl implements ProductService {
         productMapper.createProduct(productRequest);
         return productRequest.getProductId();
     }
+
+    @Override
+    public void updateProduct(Integer productId, ProductRequest productRequest) {
+
+        Date now = new Date();
+        productRequest.setLastModifiedDate(now);
+        productRequest.setProductId(productId);
+
+        productMapper.updateProduct(productRequest);
+    }
+
+    @Override
+    public void deleteProductById(Integer productId) {
+        productMapper.deleteByPrimaryKey(productId);
+    }
 }

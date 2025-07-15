@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class ProductRequest {
 
-    @NotNull
+
     private Integer productId;
     @NotNull
     private String productName;

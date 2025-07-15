@@ -44,4 +44,49 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
 
     }
+
+
+    /**
+     * @author wangxinliang@civil.com.cn
+     * @param productId
+     * @param productRequest
+     * @return {@link ResponseEntity }<{@link Product }>
+     * @功能介绍  修改商品
+     */
+    @PutMapping("/products/{productId}")
+    public ResponseEntity<Product> updateProduct(
+            @PathVariable Integer productId,
+            @RequestBody @Valid ProductRequest productRequest) {
+
+        //检查 product 是否存在
+        Product product = productService.getProductById(productId);
+
+        if (product == null) {
+
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+
+        }
+
+        //修改商品的数据
+        productService.updateProduct(productId,productRequest);
+
+        Product updatedProduct = productService.getProductById(productId);
+
+        return ResponseEntity.status(HttpStatus.OK).body(updatedProduct);
+
+    }
+
+    /**
+     * @author wangxinliang@civil.com.cn
+     * @param productId
+     * @return {@link ResponseEntity }<{@link ? }>
+     * @功能介绍  删除商品
+     */
+    @DeleteMapping("/products/{productId}")
+    public ResponseEntity<?> deleteProduct(@PathVariable Integer productId) {
+
+        productService.deleteProductById(productId);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }
