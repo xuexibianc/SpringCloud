@@ -34,6 +34,21 @@
       )
   </insert>
 
+  <!--获取所有商品 by wxl 2025715-->
+  <select id="getProducts" parameterType="com.example.dto.ProductQueryParams" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from product
+    where 1=1
+    <if test="category != null">
+      and category = #{category,jdbcType=VARCHAR}
+    </if>
+    <if test="search != null">
+      and product_name like '%${search}%'
+    </if>
+  </select>
+  <!--获取所有商品 by wxl 2025715-->
+
   <!--根据id获取产品 by wxl 2025711-->
   <select id="getProductById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select

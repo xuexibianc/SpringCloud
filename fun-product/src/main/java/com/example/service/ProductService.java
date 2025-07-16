@@ -1,9 +1,15 @@
 package com.example.service;
 
+import com.example.constant.ProductCategory;
+import com.example.dto.ProductQueryParams;
 import com.example.dto.ProductRequest;
 import com.example.entity.Product;
 
+import java.util.List;
+
 public interface ProductService {
+
+    List<Product> getProducts(ProductQueryParams productQueryParams);
 
     Product getProductById(Integer productId);
 

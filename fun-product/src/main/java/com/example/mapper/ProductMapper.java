@@ -1,9 +1,13 @@
 package com.example.mapper;
 
 
+import com.example.constant.ProductCategory;
+import com.example.dto.ProductQueryParams;
 import com.example.dto.ProductRequest;
 import com.example.entity.Product;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 
 @Mapper
@@ -20,6 +24,7 @@ public interface ProductMapper {
 
     int updateByPrimaryKey(Product row);
 
+    List<Product> getProducts(ProductQueryParams productQueryParams);
 
     Product getProductById(Integer productId);
 

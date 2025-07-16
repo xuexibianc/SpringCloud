@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import com.example.constant.ProductCategory;
+import com.example.dto.ProductQueryParams;
 import com.example.dto.ProductRequest;
 import com.example.entity.Product;
 import com.example.service.ProductService;
@@ -10,12 +12,36 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 @RestController
 public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+
+    //查詢商品列表的方法
+    /**
+     * @author wangxinliang@civil.com.cn
+     * @return {@link ResponseEntity }<{@link List }<{@link Product }>>
+     * @功能介绍  查詢所有商品
+     */
+    @GetMapping("/products")
+    public ResponseEntity<List<Product>> getProducts(
+            @RequestParam(required = false) ProductCategory category,
+            @RequestParam(required = false) String search
+            ) {
+
+        ProductQueryParams productQueryParams = new ProductQueryParams();
+        productQueryParams.setCategory(category);
+        productQueryParams.setSearch(search);
+
+       List<Product> productList =  productService.getProducts(productQueryParams);
+
+       return ResponseEntity.status(HttpStatus.OK).body(productList);
+
+    }
 
 
     @GetMapping("/products/{productId}")
