@@ -20,6 +20,11 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
 
     @Override
+    public Integer countProduct(ProductQueryParams productQueryParams) {
+        return productMapper.countProduct(productQueryParams);
+    }
+
+    @Override
     public List<Product> getProducts(ProductQueryParams productQueryParams) {
         return productMapper.getProducts(productQueryParams);
     }

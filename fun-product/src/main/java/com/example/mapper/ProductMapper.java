@@ -33,4 +33,6 @@ public interface ProductMapper {
     void updateProduct(ProductRequest productRequest);
 
     int deleteByPrimaryKey(Integer productId);
+
+    int countProduct(ProductQueryParams productQueryParams);
 }
