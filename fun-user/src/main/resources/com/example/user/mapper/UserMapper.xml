@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.example.entity.User">
+        <id column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+        <result column="last_modified_date" jdbcType="TIMESTAMP" property="lastModifiedDate" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        user_id, email, password, created_date, last_modified_date
+    </sql>
+
+
+    <!--注册用户 by wxl 2025718-->
+    <insert id="createUser" parameterType="com.example.dto.UserRegisterRequest" useGeneratedKeys="true" keyProperty="userId" keyColumn="user_id">
+        insert into user (user_id, email, password,
+                             created_date, last_modified_date
+        )
+        values (#{userId,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+                #{createdDate,jdbcType=TIMESTAMP}, #{lastModifiedDate,jdbcType=TIMESTAMP}
+               )
+    </insert>
+    <!--注册用户 by wxl 2025718-->
+
+    <!--根据id获取用户 by wxl 2025718-->
+    <select id="getUserById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where user_id = #{userId,jdbcType=INTEGER}
+    </select>
+    <!--根据id获取用户 by wxl 2025718-->
+
+    <!--根据Email获取用户 by wxl 2025719-->
+    <select id="getUserByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where email = #{email,jdbcType=VARCHAR}
+    </select>
+    <!--根据Email获取用户 by wxl 2025719-->
+
+
+</mapper>

@@ -13,6 +13,7 @@
         <module>provider-movie</module>
         <module>consumer-user</module>
         <module>fun-product</module>
+        <module>fun-user</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
